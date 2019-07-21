@@ -48,9 +48,6 @@ public class FileTools
 	/////////////////////////////////////////////////////////////////
 	// FILTERS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Filter focusing on raw.txt files */
-	public final static FilenameFilter FILTER_RAW_TEXT = createFilenameFilter(FileNames.FI_RAW_TEXT);
-	
 	/** Filter able to retain only directories */
 	public final static FileFilter FILTER_DIRECTORY = new FileFilter()
 	{	@Override
@@ -60,18 +57,20 @@ public class FileTools
 		}
 	};
 	
-	/** Filter able to retain only directories containing a raw.txt file */
-	public final static FileFilter FILTER_ARTICLES = new FileFilter()
-	{	@Override
-		public boolean accept(File file)
-		{	boolean result = false;
-			if(file.isDirectory())
-			{	String rf[] = file.list(FILTER_RAW_TEXT);
-				result = rf!=null && rf.length>0;
-			}
-			return result;
-		}
-	};
+//	/** Filter focusing on raw.txt files */
+//	public final static FilenameFilter FILTER_RAW_TEXT = createFilenameFilter(FileNames.FI_RAW_TEXT);
+//	/** Filter able to retain only directories containing a raw.txt file */
+//	public final static FileFilter FILTER_ARTICLES = new FileFilter()
+//	{	@Override
+//		public boolean accept(File file)
+//		{	boolean result = false;
+//			if(file.isDirectory())
+//			{	String rf[] = file.list(FILTER_RAW_TEXT);
+//				result = rf!=null && rf.length>0;
+//			}
+//			return result;
+//		}
+//	};
 	
 	/**
 	 * Creates a filter able to retain only files
