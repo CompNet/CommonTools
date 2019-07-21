@@ -22,7 +22,6 @@ import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -30,7 +29,6 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.math3.util.Combinations;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import fr.univavignon.tools.log.HierarchicalLogger;
@@ -979,59 +977,6 @@ public class StringTools
         return result;
 	}
 	
-	/////////////////////////////////////////////////////////////////
-	// PROPER NAMES		/////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/**
-	 * Generates all possible human names from a string representing
-	 * the full name. This methods allows considering various combinations
-	 * of lastname(s) and firstname(s).
-	 * 
-	 * @param names
-	 * 		All the surface forms of the entity, should contain several names 
-	 * 		separated by spaces.
-	 * @return
-	 * 		A list of strings corresponding to alternative forms of the 
-	 * 		original name.
-	 */
-	public static List<String> getPossibleNames(Set<String> names)
-	{	List<String> result = new ArrayList<String>();
-		for(String name: names)
-		{	if(!result.contains(name))
-				result.add(name);
-			String split[] = name.split(" ");
-			
-			for(int i=1;i<split.length;i++)
-			{	// fix the last names
-				String lastnames = "";
-				for(int j=i;j<split.length;j++)
-					lastnames = lastnames + split[j].trim() + " ";
-				lastnames = lastnames.trim();
-				
-				// we try to fix the last names and get all combinations of firstnames 
-				for(int j=1;j<i;j++)
-				{	Combinations combi = new Combinations(i,j);
-					Iterator<int[]> it = combi.iterator();
-					while(it.hasNext())
-					{	int indices[] = it.next();
-						String firstnames = "";
-						for(int index: indices)
-							firstnames = firstnames + split[index].trim() + " ";
-						String fullname = firstnames+lastnames;
-						if(!result.contains(fullname))
-							result.add(fullname);
-					}
-				}
-				
-				// we also try only the lastnames
-				if(!result.contains(lastnames))
-					result.add(lastnames);
-			}
-		}
-		
-		return result;
-	}
-		
 	/////////////////////////////////////////////////////////////////
 	// MISC				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
