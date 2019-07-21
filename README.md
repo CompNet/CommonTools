@@ -7,18 +7,18 @@ CommonTools
 
 -------------------------------------------------------------------------------
 
-jsoup
+Jsoup 1.8.2
 * web
 
-jdom2
+Jdom 2.0.6
 * keys
 * xml
 
-apache common lang
+Apache Commons Text 1.7
 * strings
 
-apache common maths
+Apache Commons Maths 3.6.1
 * strings
 
-apache http core
+Apache HttpCore 4.4.11
 * web

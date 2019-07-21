@@ -18,24 +18,20 @@ package fr.univavignon.tools.string;
  * along with CommonTools. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.io.IOException;
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.math3.util.Combinations;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import fr.univavignon.tools.log.HierarchicalLogger;
 import fr.univavignon.tools.log.HierarchicalLoggerManager;
@@ -954,6 +950,9 @@ public class StringTools
 	/////////////////////////////////////////////////////////////////
 	// DISTANCE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	/** Object used to compute the Levenshtein distance between two strings */ 
+	private final static LevenshteinDistance LEV_DIST = new LevenshteinDistance();
+	
     /**
     * This method calculates the normalized Levenshtein  
     * distance between two strings. It returns a value between 0 (similar)
@@ -968,7 +967,7 @@ public class StringTools
     */
 	public static double getNormalizedLevenshtein(String str1, String str2) 
 	{	// process the regular distance
-		double dist = StringUtils.getLevenshteinDistance(str1, str2);
+		double dist = LEV_DIST.apply(str1, str2);
 	    //System.out.println("Levenshtein Distance between " + str1 + " and " + str2 + ":" + dist);
 		
 		// get the max length
