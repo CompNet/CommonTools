@@ -1,4 +1,4 @@
-CommonTools v2.2
+CommonTools v2.3
 ===================
 *Library used in other projects*
 
