@@ -29,7 +29,6 @@ import fr.univavignon.tools.file.FileNames;
  * the created {@link HierarchicalLogger} objects.
  * 
  * @version 1.3 
- * 
  * @author Vincent Labatut
  */
 public class HierarchicalLoggerManager

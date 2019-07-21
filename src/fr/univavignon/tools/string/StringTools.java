@@ -45,6 +45,7 @@ import fr.univavignon.tools.log.HierarchicalLoggerManager;
  * {@code '"'}, so that we can include it in CSV files. 
  *  
  * @author Vincent Labatut
+ * @version 2
  */
 public class StringTools
 {

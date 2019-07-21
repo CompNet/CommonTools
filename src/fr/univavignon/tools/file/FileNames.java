@@ -24,6 +24,7 @@ import java.io.File;
  * This class contains various constants
  * related to file and folder names.
  *  
+ * @version 2
  * @author Vincent Labatut
  */
 public class FileNames

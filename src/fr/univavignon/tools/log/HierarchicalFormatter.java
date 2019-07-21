@@ -30,7 +30,6 @@ import fr.univavignon.tools.time.TimeFormatting;
  * log record by the logger.
  * 
  * @version 1.2
- * 
  * @author Vincent Labatut
  */
 public class HierarchicalFormatter extends SimpleFormatter

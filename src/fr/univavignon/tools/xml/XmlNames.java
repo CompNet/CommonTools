@@ -22,6 +22,7 @@ package fr.univavignon.tools.xml;
  * This class contains XML-related strings.
  * 
  * @author Vincent Labatut 
+ * @version 2
  */
 public class XmlNames
 {	

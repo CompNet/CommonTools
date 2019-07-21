@@ -25,6 +25,7 @@ import java.util.List;
  * This class contains HTML-related constants.
  * 
  * @author Vincent Labatut 
+ * @version 2
  */
 public class HtmlNames
 {	

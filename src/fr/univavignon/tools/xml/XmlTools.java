@@ -51,7 +51,8 @@ import fr.univavignon.tools.file.FileNames;
 /**
  * This class contains a set of methods related to XML managment.
  * 
- * @author Vincent Labatut 
+ * @author Vincent Labatut
+ * @version 2
  */
 public class XmlTools
 {	

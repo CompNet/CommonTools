@@ -41,6 +41,7 @@ import java.util.Scanner;
  * This class contains various methods
  * related to file management.
  *  
+ * @version 2
  * @author Vincent Labatut
  */
 public class FileTools

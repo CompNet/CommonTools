@@ -36,6 +36,7 @@ import fr.univavignon.tools.xml.XmlTools;
  * access to certain services such as Freebase
  * or OpenCalais. 
  *  
+ * @version 2
  * @author Vincent Labatut
  */
 public class KeyHandler

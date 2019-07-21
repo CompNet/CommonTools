@@ -30,6 +30,7 @@ import java.util.Locale;
  * time and date to log messages.
  * 
  * @author Vincent Labatut 
+ * @version 2
  */
 public class TimeFormatting
 {

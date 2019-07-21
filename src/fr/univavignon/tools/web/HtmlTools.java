@@ -30,6 +30,7 @@ import org.jsoup.nodes.TextNode;
  * This class contains a set of methods related to HTML managment.
  * 
  * @author Vincent Labatut
+ * @version 2
  */
 public class HtmlTools
 {	

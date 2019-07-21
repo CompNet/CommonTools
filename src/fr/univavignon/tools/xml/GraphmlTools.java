@@ -29,6 +29,7 @@ import org.jdom2.Namespace;
  * and methods.
  * 
  * @author Vincent Labatut
+ * @version 2
  */
 public class GraphmlTools
 {	

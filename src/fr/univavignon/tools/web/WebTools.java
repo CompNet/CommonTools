@@ -33,6 +33,7 @@ import fr.univavignon.tools.log.HierarchicalLoggerManager;
  * This class contains a set of methods related to Web communication.
  * 
  * @author Vincent Labatut 
+ * @version 2
  */
 public class WebTools
 {	

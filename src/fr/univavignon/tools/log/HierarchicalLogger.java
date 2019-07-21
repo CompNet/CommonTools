@@ -54,7 +54,6 @@ import fr.univavignon.tools.time.TimeFormatting;
  * calls {@code method3}.
  * 
  * @version 1.2
- * 
  * @author Vincent Labatut
  */
 public class HierarchicalLogger
