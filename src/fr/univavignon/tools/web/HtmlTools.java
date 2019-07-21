@@ -1,4 +1,4 @@
-package fr.univavignon.tools.html;
+package fr.univavignon.tools.web;
 
 /*
  * CommonTools

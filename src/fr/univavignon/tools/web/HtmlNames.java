@@ -1,4 +1,4 @@
-package fr.univavignon.tools.html;
+package fr.univavignon.tools.web;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 /**
- * This class contains HTML-related strings.
+ * This class contains HTML-related constants.
  * 
  * @author Vincent Labatut 
  */

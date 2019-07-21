@@ -37,21 +37,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.math3.util.Combinations;
 
-import com.google.common.base.Optional;
-import com.optimaize.langdetect.DetectedLanguage;
-import com.optimaize.langdetect.LanguageDetector;
-import com.optimaize.langdetect.LanguageDetectorBuilder;
-import com.optimaize.langdetect.i18n.LdLocale;
-import com.optimaize.langdetect.ngram.NgramExtractors;
-import com.optimaize.langdetect.profiles.LanguageProfile;
-import com.optimaize.langdetect.profiles.LanguageProfileReader;
-import com.optimaize.langdetect.text.CommonTextObjectFactories;
-import com.optimaize.langdetect.text.TextObject;
-import com.optimaize.langdetect.text.TextObjectFactory;
-
 import fr.univavignon.tools.log.HierarchicalLogger;
 import fr.univavignon.tools.log.HierarchicalLoggerManager;
-import fr.univavignon.transpolosearch.data.article.ArticleLanguage;
 
 /**
  * This class contains various methods used when processing strings.
@@ -146,7 +133,7 @@ public class StringTools
 		
 		// test clean text
 		String text = "zeriou fke ? R dfikalnfsd po ! SZ : dsqd 4485. Fio 89% dezidj, defsoui ; ezrofd 98% fdskds !!";
-		String cleaned = cleanText(text,ArticleLanguage.FR);
+		String cleaned = cleanText(text,Locale.FRENCH);
 		System.out.println(cleaned);
 	}
 	
@@ -348,11 +335,11 @@ public class StringTools
 	 * @param input
 	 * 		The string to process.
 	 * @param language 
-	 * 		Language of the considered text.
+	 * 		Language of the considered text (only {@code Locale.FRENCH} and {@code Locale.ENGLISH} are supported).
 	 * @return
 	 * 		Cleaned string.
 	 */
-	public static String cleanText(String input, ArticleLanguage language)
+	public static String cleanText(String input, Locale language)
 	{	String output = input;
 		
 		if(input!=null)
@@ -420,11 +407,11 @@ public class StringTools
 	 * @param input
 	 * 		The text to clean.
 	 * @param language
-	 * 		Language of the considered text.
+	 * 		Language of the considered text (only {@code Locale.FRENCH} and {@code Locale.ENGLISH} are supported).
 	 * @return
 	 * 		The cleaned text.
 	 */
-	private static String cleanInnerText(String input, ArticleLanguage language)
+	private static String cleanInnerText(String input, Locale language)
 	{	String output = input;
 		
 		// replace all white spaces by regular spaces
@@ -528,7 +515,13 @@ public class StringTools
 		// replace space-separated & by the full word
 		String repl = "/";
 		if(language!=null)
-			repl = language.getEt();
+		{	if(language.equals(Locale.FRENCH))
+				repl = "et";
+			else if(language.equals(Locale.ENGLISH))
+				repl = "and";
+			else
+				logger.log("WARNING: language not supported ("+language+")");
+		}
 		output = output.replaceAll(" & "," "+repl+" ");
 		// remove the remaining & (not space-separated)
 		output = output.replaceAll("&","/");
@@ -565,11 +558,11 @@ public class StringTools
 	 * @param title
 	 * 		Original raw title.
 	 * @param language
-	 * 		Language of the title to process.
+	 * 		Language of the considered text (only {@code Locale.FRENCH} and {@code Locale.ENGLISH} are supported).
 	 * @return
 	 * 		Clean version of the title.
 	 */
-	public static String cleanTitle(String title, ArticleLanguage language)
+	public static String cleanTitle(String title, Locale language)
 	{	String result = cleanText(title,language);
 		result = result.replaceAll("\"", "");
 		result = result.replaceAll("\\n", " ");
@@ -610,7 +603,7 @@ public class StringTools
 	 * character variants are replaced by '\n'. All consecutive redundant whitespaces are 
 	 * removed. The text is also trimmed (leading and trailing whitespaces are removed).
 	 * <br/>
-	 * This method is meant to be used only by {@link #cleanText(String,ArticleLanguage)}.
+	 * This method is meant to be used only by {@link #cleanText(String,Locale)}.
 	 *  
 	 * @param string
 	 * 		The original string (not modified).
@@ -717,7 +710,7 @@ public class StringTools
 	 * Removes all the non-latin letters, as they are generally not supported
 	 * by the recognizers (or other processors).
 	 * <br/>
-	 * This method is meant to be used only by {@link #cleanInnerText(String,ArticleLanguage)}.
+	 * This method is meant to be used only by {@link #cleanInnerText(String,Locale)}.
 	 * 
 	 * @param input
 	 * 		Original string.
@@ -1039,90 +1032,7 @@ public class StringTools
 		
 		return result;
 	}
-	
-	/////////////////////////////////////////////////////////////////
-	// LANGUAGE			/////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** Object used to detect the language of a text */
-	private static LanguageDetector LANGUAGE_DETECTOR = null;
-	/** Object used by the language detector for long texts */
-	private static TextObjectFactory TEXT_FACTORY_LONG = null;
-	/** Object used by the language detector for short texts */
-	private static TextObjectFactory TEXT_FACTORY_SHORT = null;
-
-	/**
-	 * Detects the language in the specified text, and return the corresponding enum value.
-	 * If the language does not correspond to one of the enumerated languages, then the
-	 * method returns {@code null}.
-	 * 
-	 * @param text
-	 * 		The text whose language we want to detect. 
-	 * @param shortText
-	 * 		Whether the text is short ({@code true}) or long ({@code false}). 
-	 * @return 
-	 * 		The {@link ArticleLanguage} value associated to the detected language,
-	 * 		or {@code null} if the language could be recognized or is not enumerated.
-	 *  
-	 * @throws IOException 
-	 * 		Problem while initializing the library.
-	 */
-	public static ArticleLanguage detectLanguage(String text, boolean shortText) throws IOException
-	{	ArticleLanguage result = null;
 		
-		if(text!=null && !text.isEmpty())
-		{	// init language detector
-			if(LANGUAGE_DETECTOR==null)
-			{	List<LanguageProfile> languageProfiles = new LanguageProfileReader().readAllBuiltIn();
-				LANGUAGE_DETECTOR = LanguageDetectorBuilder.create(NgramExtractors.standard())
-					.withProfiles(languageProfiles)
-					.build();
-			}
-			// init text factory
-			TextObjectFactory textObjectFactory;
-			if(shortText)
-			{	if(TEXT_FACTORY_SHORT==null)
-					TEXT_FACTORY_SHORT = CommonTextObjectFactories.forDetectingShortCleanText();
-				textObjectFactory = TEXT_FACTORY_SHORT;
-			}
-			else
-			{	if(TEXT_FACTORY_LONG==null)
-				TEXT_FACTORY_LONG = CommonTextObjectFactories.forDetectingOnLargeText();
-				textObjectFactory = TEXT_FACTORY_LONG;
-			}
-			
-			// process the text
-			TextObject textObject = textObjectFactory.forText(text);
-			Optional<LdLocale> lang = LANGUAGE_DETECTOR.detect(textObject);
-			LdLocale loc = null;
-			if(lang.isPresent())
-				loc = lang.get();
-			else
-			{	List<DetectedLanguage> dls = LANGUAGE_DETECTOR.getProbabilities(textObject);
-				double maxProba = 0;
-				for(DetectedLanguage dl: dls)
-				{	double proba = dl.getProbability();
-					if(proba>maxProba)
-					{	loc = dl.getLocale();
-						maxProba = proba;
-					}
-				}
-			}
-			if(loc!=null)
-			{	String iso = loc.getLanguage();
-				switch(iso)
-				{	case "fr": 
-						result = ArticleLanguage.FR;
-						break;
-					case "en": 
-						result = ArticleLanguage.EN;
-						break;
-				}
-			}
-		}
-		
-		return result;
-	}
-	
 	/////////////////////////////////////////////////////////////////
 	// MISC				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
@@ -1171,100 +1081,6 @@ public class StringTools
 				result = result + " ";
 		}
 		result = result + "^";
-		
-		return result;
-	}
-	
-	/////////////////////////////////////////////////////////////////
-	// FREQUENCIES		/////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/**
-	 * Compute the total word frequencies for the specified text.
-	 * If the language is specified, the stop-words are not counted.
-	 *  
-	 * @param text
-	 * 		The text to process.
-	 * @param language 
-	 * 		Language of the text, or {@code null} if stop-words should be counted.
-	 * @return
-	 * 		A map associating a frequency to each word appearing at least once.
-	 */
-	public static Map<String,Integer> computeWordFrequencies(String text, ArticleLanguage language)
-	{	List<String> texts = new ArrayList<String>();
-		texts.add(text);
-		Map<String,Integer> result = computeWordFrequencies(texts, language);
-		return result;
-	}
-	
-	/**
-	 * Compute the total word frequencies for the specified list of texts.
-	 * If the language is specified, the stop-words are not counted.
-	 * <br/>
-	 * The processed text is supposed to be clean.
-	 *  
-	 * @param texts
-	 * 		A list of texts.
-	 * @param language 
-	 * 		Language of the text, or {@code null} if stop-words should be counted.
-	 * @return
-	 * 		A map associating a frequency to each word appearing at least once.
-	 */
-	public static Map<String,Integer> computeWordFrequencies(Collection<String> texts, ArticleLanguage language)
-	{	Map<String,Integer> result = new HashMap<String,Integer>();
-		
-		// init the list of stopwords
-		List<String> stopWords;
-		if(language!=null)
-			stopWords = StopWordsManager.getStopWords(language);
-		else
-			stopWords = new ArrayList<String>();
-		
-		// process each text
-		for(String text: texts)
-		{	String cleanText = text.replaceAll("\\n", " ");
-			cleanText = cleanText.replaceAll("\\d+"," ");	// we ignore digits
-			cleanText = removePunctuation(cleanText);		// and punctuation
-			cleanText = cleanText.toLowerCase();
-			
-			String[] tokens = cleanText.split(" ");
-			for(String token: tokens)
-			{	if(!stopWords.contains(token))
-				{	Integer c = result.get(token);
-					if(c==null)
-						c = 0;
-					c++;
-					result.put(token,c);
-				}
-			}
-		}
-		
-		return result;
-	}
-
-	/**
-	 * Compute the total word frequencies for the specified list of tokens.
-	 * Unlike in {@link #computeWordFrequencies(Collection, ArticleLanguage)},
-	 * the text is supposed to have been tokenized, so the list is not a list 
-	 * of texts, but a list of tokens, which are directly compared. They are
-	 * also supposed to be already normalized: no cleaning is performed by the
-	 * method. Also, it does not distinguish stopwords from other words. 
-	 *  
-	 * @param tokens
-	 * 		A list of tokens.
-	 * @return
-	 * 		A map associating a frequency to each token appearing at least once.
-	 */
-	public static Map<String,Integer> computeFrequenciesFromTokens(Collection<String> tokens)
-	{	Map<String,Integer> result = new HashMap<String,Integer>();
-		
-		// process each token
-		for(String token: tokens)
-		{	Integer c = result.get(token);
-			if(c==null)
-				c = 0;
-			c++;
-			result.put(token,c);
-		}
 		
 		return result;
 	}
