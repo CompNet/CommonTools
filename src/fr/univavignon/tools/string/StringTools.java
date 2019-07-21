@@ -324,7 +324,7 @@ public class StringTools
 	 * <ul>
 	 * 	<li>Clean problems related to the variants of the space character, using {@link #cleanSpaces(String)}.</li>
 	 * 	<li>Move certain characters (such as punctuation and newlines) out of hyperlinks.</li>
-	 * 	<li>Clean the text using {@link #cleanInnerText(String,ArticleLanguage)} (except URLs, which are kept as is).</li>
+	 * 	<li>Clean the text using {@link #cleanInnerText(String,Locale)} (except URLs, which are kept as is).</li>
 	 * </ul>
 	 *    
 	 * @param input
@@ -379,7 +379,7 @@ public class StringTools
 	
 	/**
 	 * Clean some text taken from an article, and which is not a URL.
-	 * This method is meant used only by {@link #cleanText(String,ArticleLanguage)}.
+	 * This method is meant used only by {@link #cleanText(String,Locale)}.
 	 * <br/>
 	 * It involves numerous operations:
 	 * <ul>
@@ -546,7 +546,7 @@ public class StringTools
 	
 	/**
 	 * Clean a string representing an article title. It is cleaned like
-	 * regular text using {@link #cleanText(String,ArticleLanguage)}, then new lines and
+	 * regular text using {@link #cleanText(String,Locale)}, then new lines and
 	 * double quotes are removed (so that this string can be put in a CSV
 	 * file if needed).
 	 * 
