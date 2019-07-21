@@ -28,7 +28,6 @@ import org.jdom2.Element;
 import org.xml.sax.SAXException;
 
 import fr.univavignon.tools.file.FileNames;
-import fr.univavignon.tools.xml.XmlNames;
 import fr.univavignon.tools.xml.XmlTools;
 
 /**
@@ -55,6 +54,22 @@ public class KeyHandler
 	}
 	
 	/////////////////////////////////////////////////////////////////
+	// XML ATTRIBUTES		/////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** User id associated to a key */
+	private static final String ATT_ID = "id";
+	/** Name of a key */
+	private static final String ATT_NAME = "name";
+	/** Value associated to a key */
+	private static final String ATT_VALUE = "value";
+
+	/////////////////////////////////////////////////////////////////
+	// XML ELEMENTS			/////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Some text key */
+	private static final String ELT_KEY = "key";
+	
+	/////////////////////////////////////////////////////////////////
 	// LOADING		/////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
@@ -74,11 +89,11 @@ public class KeyHandler
 			Element keysElt = XmlTools.getRootFromFile(dataFile, schemaFile);
 			
 			// populate map
-			List<Element> keyElts = keysElt.getChildren(XmlNames.ELT_KEY);
+			List<Element> keyElts = keysElt.getChildren(ELT_KEY);
 			for(Element keyElt: keyElts)
-			{	String name = keyElt.getAttributeValue(XmlNames.ATT_NAME);
-				String value = keyElt.getAttributeValue(XmlNames.ATT_VALUE);
-				String id = keyElt.getAttributeValue(XmlNames.ATT_KEYID);
+			{	String name = keyElt.getAttributeValue(ATT_NAME);
+				String value = keyElt.getAttributeValue(ATT_VALUE);
+				String id = keyElt.getAttributeValue(ATT_ID);
 				
 				// ignore empty keys or names
 				if(!name.isEmpty() && !value.isEmpty())
