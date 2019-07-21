@@ -24,7 +24,7 @@ import java.io.File;
  * This class contains various constants
  * related to file and folder names.
  *  
- * @version 2.2
+ * @version 2.3
  * @author Vincent Labatut
  */
 public class FileNames
@@ -54,28 +54,34 @@ public class FileNames
 	public final static String EX_BIN = ".bin";
 	/** BibTeX file extension */
 	public final static String EX_BIBTEX = ".bib";
-	/** Thomson ISI file extension */
-	public final static String EX_ISI = ".ciw";
 	/** Comma-separated values (CSV) file extension */
 	public final static String EX_CSV = ".csv";
+	/** GIF image format */
+	public final static String EX_GIF = ".gif";
+	/** Graphml file extension */
+	public final static String EX_GRAPHML = ".graphml";
+	/** HTML file extension */
+	public final static String EX_HTML = ".html";
+	/** Thomson ISI file extension */
+	public final static String EX_ISI = ".ciw";
+	/** JPEG image format */
+	public final static String EX_JPEG = ".jpeg";
 	/** PDF file extension */
 	public final static String EX_PDF = ".pdf";
 	/** PNG image format */
 	public final static String EX_PNG = ".png";
-	/** JPEG image format */
-	public final static String EX_JPEG = ".jpeg";
-	/** GIF image format */
-	public final static String EX_GIF = ".gif";
+	/** Scripts in Python */
+	public final static String EX_PYTHON = ".py";
+	/** Scripts in R language */
+	public final static String EX_R = ".R";
 	/** XML Schema file extension */
 	public final static String EX_SCHEMA = ".xsd";
+	/** SQL scripts */
+	public final static String EX_SQL = ".sql";
 	/** Text file extension */
 	public final static String EX_TEXT = ".txt";
 	/** XML file extension */
 	public final static String EX_XML = ".xml";
-	/** HTML file extension */
-	public final static String EX_HTML = ".html";
-	/** Graphml file extension */
-	public final static String EX_GRAPHML = ".graphml";
 
 	/////////////////////////////////////////////////////////////////
 	// FILES		/////////////////////////////////////////////////
