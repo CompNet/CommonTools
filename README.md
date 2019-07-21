@@ -15,11 +15,11 @@ CommonTools is free software: you can redistribute it and/or modify it under the
 -----------------------------------------------------------------------
 
 ## Description
-TBC
+This Eclipse project contains Java classes implementing general features, which are likely to be useful in other applications. 
 
 
 ## Use
-This source code is meant to be used as utility in larger projects. 
+This source code is meant to be used as utility in larger Java projects, by simply including the appropriate packages. 
 
 
 ## Dependencies
