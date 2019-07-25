@@ -55,7 +55,7 @@ import fr.univavignon.tools.file.FileNames;
  * This class contains a set of methods related to XML managment.
  * 
  * @author Vincent Labatut
- * @version 2.1
+ * @version 2.3
  */
 public class XmlTools
 {	
@@ -338,7 +338,25 @@ public class XmlTools
 		
 		return result;
 	}
-
+	
+	/**
+	 * Checks whether the specified element is empty, i.e.
+	 * it has no attribute, no element children, and does not
+	 * contain any text.
+	 *  
+	 * @param element
+	 * 		The element of interest.
+	 * @return
+	 * 		{@code true} iff it is empty.
+	 */
+	public static boolean isEmptyElement(Element element)
+	{	boolean result = 
+			!element.hasAttributes()
+			&& element.getChildren().isEmpty()
+			&& element.getText().isEmpty();
+		return result;
+	}
+	
 	/////////////////////////////////////////////////////////////////
 	// PATH				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
