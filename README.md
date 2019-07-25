@@ -1,4 +1,4 @@
-CommonTools v2.4
+CommonTools v2.6
 ===================
 *Library used in other projects*
 
@@ -31,9 +31,12 @@ Here are the dependencies for CommonTools:
   * `xml` package: XML-related features.
 * [Apache Commons Text 1.7](https://commons.apache.org/proper/commons-text/)
   * `string` package: string comparison.
-* [Apache HttpCore 4.4.11](https://hc.apache.org/httpcomponents-core-ga/)
+* [Apache HttpCore 4.4.11](https://hc.apache.org/httpcomponents-core-ga/) and [Apache HttpClient 4.5.9](https://hc.apache.org/httpcomponents-client-4.5.x)
   * `web` package: HTTP-related features.
+* [Apache Commons Logging 1.2](http://commons.apache.org/proper/commons-logging/)
+  * Required by other Apache libraries.
 
 
 ## Todo
-* TBC
+* Debug web reader
+* Include graph package from BiblioProcess, move GraphmlTools to a separate subpackage 

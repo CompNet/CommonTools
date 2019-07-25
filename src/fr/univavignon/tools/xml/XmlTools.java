@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,9 +38,11 @@ import javax.xml.validation.SchemaFactory;
 import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
 import org.jdom2.Text;
 import org.jdom2.input.DOMBuilder;
+import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import org.xml.sax.ErrorHandler;
@@ -52,14 +55,14 @@ import fr.univavignon.tools.file.FileNames;
  * This class contains a set of methods related to XML managment.
  * 
  * @author Vincent Labatut
- * @version 2
+ * @version 2.1
  */
 public class XmlTools
 {	
 	/////////////////////////////////////////////////////////////////
 	// INITIALIZATION	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Maps of document builders, each one corresponding to a specifiec XML schema */
+	/** Maps of document builders, each one corresponding to a specific XML schema */
 	public static final HashMap<String,DocumentBuilder> DOCUMENT_BUILDERS = new HashMap<String,DocumentBuilder>();	
 	
 	/** Populates the map of document builders */
@@ -140,7 +143,7 @@ public class XmlTools
 	// ACCESS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
-	 * Open and reads the file corresponding to an XML document,
+	 * Opens and reads the file corresponding to an XML document,
 	 * parses it using the specified XML schema file,
 	 * and returns the result as a JDom object.
 	 *  
@@ -185,7 +188,27 @@ public class XmlTools
 		inBuff.close();
 		return result;
 	}
-
+	
+	/**
+	 * Parses the specified text and builds an JDom object.
+	 *  
+	 * @param text
+	 * 		The string containing the XML code.
+	 * @return
+	 * 		A JDom {@link Element} corresponding to the result of the parsing.
+	 * 
+	 * @throws JDOMException
+	 * 		Problem while parsing the XML code.
+	 * @throws IOException
+	 * 		Problem while parsing the XML code.
+	 */
+	public static Element getRootFromText(String text) throws JDOMException, IOException
+	{	SAXBuilder builder = new SAXBuilder();
+		Document document = builder.build(new StringReader(text));
+		Element result = document.getRootElement();
+		return result;
+	}
+	
 	/////////////////////////////////////////////////////////////////
 	// CREATION			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
@@ -311,6 +334,29 @@ public class XmlTools
 				String temp = getRecText(elt);
 				result = result + temp;
 			}
+		}
+		
+		return result;
+	}
+
+	/////////////////////////////////////////////////////////////////
+	// PATH				/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/**
+	 * Returns a string representation of the path of the specified
+	 * Element in its document, starting from the root.
+	 * 
+	 * @param elt
+	 * 		The Element of interest.
+	 * @return
+	 * 		The path of this element.
+	 */
+	public static String getPath(Element elt)
+	{	String result = "";
+		
+		while(elt!=null)
+		{	result = result + "/" + elt.getName();
+			elt = elt.getParentElement();
 		}
 		
 		return result;
