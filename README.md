@@ -39,4 +39,7 @@ Here are the dependencies for CommonTools:
 
 ## Todo
 * Debug web reader
-* Include graph package from BiblioProcess, move GraphmlTools to a separate subpackage 
+* Include graph package from BiblioProcess, move GraphmlTools to a separate subpackage
+* Use the new LocalDate class instead of Date
+* Check the more recent nio methods
+
