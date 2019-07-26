@@ -41,7 +41,7 @@ import java.util.Scanner;
  * This class contains various methods
  * related to file management.
  *  
- * @version 2
+ * @version 2.1
  * @author Vincent Labatut
  */
 public class FileTools
@@ -125,7 +125,7 @@ public class FileTools
 	 * 		File to open.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return 
 	 * 		Scanner object ready to read the file.
 	 * 
@@ -147,7 +147,7 @@ public class FileTools
 	 * 		File to open.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return 
 	 * 		Scanner object ready to read the file.
 	 * 
@@ -175,7 +175,7 @@ public class FileTools
 	 * 		File to be read.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return
 	 * 		String corresponding to the file content.
 	 * 
@@ -205,7 +205,7 @@ public class FileTools
 	 * 		Path of the file to be read.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return
 	 * 		String corresponding to the file content.
 	 * 
@@ -231,7 +231,7 @@ public class FileTools
 	 * 		File to open.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return 
 	 * 		PrintWriter object ready to write in the file.
 	 * 
@@ -253,7 +253,7 @@ public class FileTools
 	 * 		File to open.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * @return 
 	 * 		PrintWriter object ready to write in the file.
 	 * 
@@ -278,7 +278,7 @@ public class FileTools
 	 * 		String corresponding to the file content.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * 
 	 * @throws IOException
 	 * 		Problem while accessing the file.
@@ -304,7 +304,7 @@ public class FileTools
 	 * 		String corresponding to the file content.
 	 * @param encoding
 	 * 		Encoding of the text file, generally {@code "UTF-8"} 
-	 * 		or {@code "ISO-8859-1"}.
+	 * 		or {@code "ISO-8859-1"}. Or {@code StandardCharsets.UTF_8.name()}.
 	 * 
 	 * @throws IOException
 	 * 		Problem while accessing the file.
