@@ -373,7 +373,7 @@ public class XmlTools
 	{	String result = "";
 		
 		while(elt!=null)
-		{	result = result + "/" + elt.getName();
+		{	result = elt.getName() + "/" + result;
 			elt = elt.getParentElement();
 		}
 		
