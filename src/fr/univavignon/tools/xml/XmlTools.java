@@ -55,7 +55,7 @@ import fr.univavignon.tools.file.FileNames;
  * This class contains a set of methods related to XML managment.
  * 
  * @author Vincent Labatut
- * @version 2.3
+ * @version 2.4
  */
 public class XmlTools
 {	
@@ -246,6 +246,7 @@ public class XmlTools
 	    Namespace sch = Namespace.getNamespace("xsi",XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 		root.addNamespaceDeclaration(sch);
 		root.setAttribute("noNamespaceSchemaLocation",schemaPath,sch);
+		
 		// define output format
 		Format format = Format.getPrettyFormat();
 		format.setIndent("\t");
@@ -292,6 +293,42 @@ public class XmlTools
 	    Namespace sch = Namespace.getNamespace("xsi",XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 		root.addNamespaceDeclaration(sch);
 		root.setAttribute("schemaLocation",namespaceLocation+" "+schemaLocation,sch);
+		
+		// define output format
+		Format format = Format.getPrettyFormat();
+		format.setIndent("\t");
+		format.setEncoding("UTF-8");
+		
+		// create outputter
+		XMLOutputter outputter = new XMLOutputter(format);
+		
+		// write in the stream
+	    outputter.output(document,outBuf);
+	    
+	    // close the stream
+	    outBuf.close();
+	}
+	
+	/**
+	 * Creates a new xml file using the specified element
+	 * as a root. The document is not bound to any schema.
+	 * 
+	 * @param dataFile
+	 * 		The xml file to be created.
+	 * @param root
+	 * 		The root element of the document.
+	 * 
+	 * @throws IOException
+	 * 		Problem when recording the new xml document.
+	 */
+	public static void makeFileFromRoot(File dataFile, Element root) throws IOException
+	{	// open file stream
+		FileOutputStream out = new FileOutputStream(dataFile);
+		BufferedOutputStream outBuf = new BufferedOutputStream(out);
+		
+		// create document
+		Document document = new Document(root);
+		
 		// define output format
 		Format format = Format.getPrettyFormat();
 		format.setIndent("\t");
