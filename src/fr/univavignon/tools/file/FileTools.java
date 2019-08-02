@@ -324,19 +324,25 @@ public class FileTools
 	 * 
 	 * @param file
 	 * 		File or directory to delete.
+	 * @return
+	 * 		{@code true} iff the file could be deleted.
 	 */
-	public static void delete(File file)
-	{	// parameter is a folder
+	public static boolean delete(File file)
+	{	boolean result = true;
+		
+		// parameter is a folder
 		if(file.isDirectory())
 		{	File files[] = file.listFiles();
 			for(File f: files)
-				delete(f);
-			file.delete();
+				result = delete(f) && result;
+			result = result && file.delete();
 		}
-	
+		
 		// parameter is a file
 		else
-			file.delete();
+			result = file.delete();
+		
+		return result;
 	}
 	
 	/**
