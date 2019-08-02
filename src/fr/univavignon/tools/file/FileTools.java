@@ -30,6 +30,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -336,6 +337,41 @@ public class FileTools
 		// parameter is a file
 		else
 			file.delete();
+	}
+	
+	/**
+	 * Deletes the specified list of files or directories.
+	 * 
+	 * @param files
+	 * 		List of file paths.
+	 */
+	public static void delete(List<String> files)
+	{	for(String file: files)
+		{	File f = new File(file);
+			delete(f);
+		}		
+	}
+	
+	/**
+	 * Deletes all the files or directory listed in the
+	 * specified file. Each line is supposed to contain
+	 * a single path.
+	 * 
+	 * @param listFile
+	 * 		File containing the list of files to delete.
+	 * 
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while opening the list file.
+	 * @throws FileNotFoundException 
+	 * 		Problem while opening the list file.
+	 */
+	public static void deleteList(String listFile) throws FileNotFoundException, UnsupportedEncodingException
+	{	Scanner sc = openTextFileRead(listFile, StandardCharsets.UTF_8.name());
+		while(sc.hasNextLine())
+		{	String line = sc.nextLine().trim();
+			File f = new File(line);
+			delete(f);
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////
