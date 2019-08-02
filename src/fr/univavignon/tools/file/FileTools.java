@@ -329,7 +329,7 @@ public class FileTools
 	 */
 	public static boolean delete(File file)
 	{	boolean result = true;
-		
+	
 		// parameter is a folder
 		if(file.isDirectory())
 		{	File files[] = file.listFiles();
@@ -337,7 +337,7 @@ public class FileTools
 				result = delete(f) && result;
 			result = result && file.delete();
 		}
-		
+	
 		// parameter is a file
 		else
 			result = file.delete();
@@ -350,12 +350,18 @@ public class FileTools
 	 * 
 	 * @param files
 	 * 		List of file paths.
+	 * @return 
+	 * 		{@code true} iff all files could be deleted.
 	 */
-	public static void delete(List<String> files)
-	{	for(String file: files)
+	public static boolean delete(List<String> files)
+	{	boolean result = true;
+	
+		for(String file: files)
 		{	File f = new File(file);
-			delete(f);
+			result = delete(f) && result;
 		}		
+		
+		return result;
 	}
 	
 	/**
@@ -365,19 +371,25 @@ public class FileTools
 	 * 
 	 * @param listFile
 	 * 		File containing the list of files to delete.
+	 * @return 
+	 * 		{@code true} iff all files could be deleted.
 	 * 
 	 * @throws UnsupportedEncodingException
 	 * 		Problem while opening the list file.
 	 * @throws FileNotFoundException 
 	 * 		Problem while opening the list file.
 	 */
-	public static void deleteList(String listFile) throws FileNotFoundException, UnsupportedEncodingException
-	{	Scanner sc = openTextFileRead(listFile, StandardCharsets.UTF_8.name());
+	public static boolean deleteList(String listFile) throws FileNotFoundException, UnsupportedEncodingException
+	{	boolean result = true;
+		
+		Scanner sc = openTextFileRead(listFile, StandardCharsets.UTF_8.name());
 		while(sc.hasNextLine())
 		{	String line = sc.nextLine().trim();
 			File f = new File(line);
-			delete(f);
+			result = delete(f) && result;
 		}
+		
+		return result;
 	}
 	
 	/////////////////////////////////////////////////////////////////
