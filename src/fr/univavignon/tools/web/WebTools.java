@@ -38,7 +38,7 @@ import fr.univavignon.tools.log.HierarchicalLoggerManager;
  * This class contains a set of methods related to Web communication.
  * 
  * @author Vincent Labatut 
- * @version 2
+ * @version 2.1
  */
 public class WebTools
 {	
@@ -46,7 +46,7 @@ public class WebTools
 	// LOGGING			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Common object used for logging */
-	protected static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	protected final static HierarchicalLogger LOGGER = HierarchicalLoggerManager.getHierarchicalLogger();
 	
 	/////////////////////////////////////////////////////////////////
 	// GET				/////////////////////////////////////////////
@@ -94,8 +94,8 @@ public class WebTools
 	 * 		Problem while reading the answer.
 	 */
 	public static String readAnswer(HttpResponse response) throws IllegalStateException, IOException
-	{	logger.log("Read HTTP answer");
-		logger.increaseOffset();
+	{	LOGGER.log("Read HTTP answer");
+		LOGGER.increaseOffset();
 		
 		// init reader
 		HttpEntity entity = response.getEntity();
@@ -112,10 +112,10 @@ public class WebTools
 			nbr++;
 //			logger.log("Line:" +line);
 		}
-		logger.log("Lines read: "+nbr);
+		LOGGER.log("Lines read: "+nbr);
 		
 		String result = stringBuffer.toString();
-		logger.decreaseOffset();
+		LOGGER.decreaseOffset();
 		return result;
 	}
 }

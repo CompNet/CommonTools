@@ -45,7 +45,7 @@ import fr.univavignon.tools.log.HierarchicalLoggerManager;
  * {@code '"'}, so that we can include it in CSV files. 
  *  
  * @author Vincent Labatut
- * @version 2
+ * @version 2.1
  */
 public class StringTools
 {
@@ -136,7 +136,7 @@ public class StringTools
 	// LOGGER		/////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Common object used for logging */
-	public static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	public final static HierarchicalLogger LOGGER = HierarchicalLoggerManager.getHierarchicalLogger();
 	
 	/////////////////////////////////////////////////////////////////
 	// COMPARISON		/////////////////////////////////////////////
@@ -515,7 +515,7 @@ public class StringTools
 			else if(language.equals(Locale.ENGLISH))
 				repl = "and";
 			else
-				logger.log("WARNING: language not supported ("+language+")");
+				LOGGER.log("WARNING: language not supported ("+language+")");
 		}
 		output = output.replaceAll(" & "," "+repl+" ");
 		// remove the remaining & (not space-separated)
@@ -713,7 +713,7 @@ public class StringTools
 	 * 		Same string, without the non-latin letters.
 	 */
 	private static String removeNonLatinLetters(String input)
-	{	logger.increaseOffset();
+	{	LOGGER.increaseOffset();
 //		boolean disp = input.length()>100000;
 		String result = input;
 		
@@ -765,7 +765,7 @@ public class StringTools
 			result = tmp.toString();
 	    }
 		
-		logger.decreaseOffset();
+		LOGGER.decreaseOffset();
 		 return result;
 	}
 	
