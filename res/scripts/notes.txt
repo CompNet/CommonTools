@@ -1,0 +1,44 @@
+- class(): returns the type of a value
+- traceback(): give details regarding which function call caused an error
+- Sys.time(): returns the system's time. format: format(Sys.time(),"%a %b %d %X %Y")
+
+- missing(x): checks if parameter x is missing or not
+- hasArg(z): apparently the same thing. But better.
+
+- intersect/setdiff/setequal/union/%in%: set operators
+
+- any(vector==value): checks if a value belongs to a vector
+- na.rm=TRUE: parameter allowing to ignore NA values in most stat functions
+
+- deparse(substitute(foo)): name of function foo as a string
+
+- packageVersion("package name"): return the version of an installed package
+
+- decompose.graph/clusters: break a graph into its components
+
+- which(vector==value): returns the position of the value in the array
+- which(vector1 %in% vector2): position of all elements of one vector in the other 
+- which.min/max:returns the position of the min/maximal value in the vector
+- option arr.ind=TRUE when using on a 2D array
+- match: like which, but for several values at once. eg: match(c(10,20,30,40),c(20,40)) returns c(NA,1,NA,2)
+
+- options(warn=1) causes R to print warnings as they occur (http://www.stats.uwo.ca/faculty/murdoch/software/debuggingR/)
+- options(warn=2) converts them to errors, which will usually abort execution and allow post-mortem debugging
+- options(error=recover) allows executing the debugger() debug function after an error. type n for main menu, 0 to quit
+
+- plot(density(x)): estimates the density of a sample and plots it
+- plot(ecdf(x)) same thing with the empirical cumulative distribution function
+
+- list.graph/vertex/edge.attributes: return the names of the attributes
+
+- lapply: applies one function to a list of values and returns a list of results.
+  sapply: same thing, but returns a vector (or matrix)
+  cf. http://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/
+
+- basename: returns the filename from a path (string)
+- readLines: read a single line in a text file
+
+- substr: returns a substring
+- strsplit: splits a string according to some specified substring
+- nchar: length of a string
+
