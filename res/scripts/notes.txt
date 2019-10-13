@@ -3,7 +3,7 @@
 - Sys.time(): returns the system's time. format: format(Sys.time(),"%a %b %d %X %Y")
 
 - missing(x): checks if parameter x is missing or not
-- hasArg(z): apparently the same thing. But better.
+- hasArg(z): apparently the same thing. But better. << use this one
 
 - intersect/setdiff/setequal/union/%in%: set operators
 
@@ -42,3 +42,11 @@
 - strsplit: splits a string according to some specified substring
 - nchar: length of a string
 
+- data frame
+  create empty one : 
+  df <- data.frame(
+		matrix(NA, nrow, ncols, dimnames=list(c(), colnames)),
+		check.names=FALSE,
+		stringsAsFactors=FALSE
+	)
+  
