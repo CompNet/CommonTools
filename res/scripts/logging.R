@@ -11,6 +11,9 @@
 # 
 # 05/2016 Vincent Labatut
 #############################################################################################
+FOLDER_LOG <- "log"
+dir.create(path=FOLDER_LOG, showWarnings=FALSE, recursive=TRUE)
+
 start.time <- Sys.time()
 con <- NA
 
