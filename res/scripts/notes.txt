@@ -66,6 +66,9 @@
 - substr: returns a substring
 - strsplit: splits a string according to some specified substring
 - nchar: length of a string
+- grepl: boolean for strings starting like the specified parameters, in the specified string vector
+  ex. grepl(c("abcd","abcded","fd","abcv"),pattern="abc")
+   >> TRUE  TRUE FALSE  TRUE
 
 
 
