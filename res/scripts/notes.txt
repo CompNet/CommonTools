@@ -117,6 +117,7 @@
 - basename: returns the filename from a path (string)
 - readLines: read a single line in a text file
 - file.path: builds a file path
+- dir.create(path=..., showWarnings=FALSE, recursive=TRUE): create folder if does not exist
 
 
 
