@@ -51,6 +51,7 @@
 - any(vector==value): checks if a value belongs to a vector
 
 - which(vector==value): returns the position of the value in the array
+- which(matrix==value, arr.ind=TRUE): same thing, but for a matrix
 - which(vector1 %in% vector2): position of all elements of one vector in the other 
 - which.min/max:returns the position of the min/maximal value in the vector
 	option arr.ind=TRUE when using on a 2D array
