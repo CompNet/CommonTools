@@ -64,7 +64,7 @@
 #############################################################################
 # Strings
 #############################################################################
-- substr: returns a substring
+- substr(x, start, stop): returns a substring
 - strsplit: splits a string according to some specified substring
 - nchar: length of a string
 - chartr(old, new, x): replace a character/substring in a string
