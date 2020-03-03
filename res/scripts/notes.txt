@@ -65,7 +65,7 @@
 # Strings
 #############################################################################
 - substr(x, start, stop): returns a substring
-- strsplit: splits a string according to some specified substring
+- strsplit(x, split, fixed=FALSE): splits a string x according to some specified substring split
 - nchar: length of a string
 - chartr(old, new, x): replace a character/substring in a string
   ex: chartr(old=" ",new="_",	x="AZZE DSOIDSD DSD")
