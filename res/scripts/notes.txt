@@ -72,7 +72,8 @@
 - grepl: boolean for strings starting like the specified parameters, in the specified string vector
   ex. grepl(c("abcd","abcded","fd","abcv"),pattern="abc")
    >> TRUE  TRUE FALSE  TRUE
-
+- sprintf("%02d", as.integer("1")) >> 01
+  forces the number of leading zeros when converting an int into a string 
 
 
 

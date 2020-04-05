@@ -31,9 +31,8 @@ import fr.univavignon.tools.file.FileNames;
 import fr.univavignon.tools.xml.XmlTools;
 
 /**
- * This class handles the keys associated to the
- * access to certain services such as Freebase
- * or OpenCalais. 
+ * This class handles the keys, passwords, etc., associated to the
+ * access to certain services. 
  *  
  * @version 2
  * @author Vincent Labatut
