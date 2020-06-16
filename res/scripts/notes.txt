@@ -58,6 +58,7 @@
 	
 - match: like which, but for several values at once. eg: match(c(10,20,30,40),c(20,40)) returns c(NA,1,NA,2)
 
+- X <- X[-2,,drop=FALSE]: keep a matrix structure
 
 
 
