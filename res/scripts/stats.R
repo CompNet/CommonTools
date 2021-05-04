@@ -33,7 +33,7 @@ stat.mode <- function(x, na.rm=FALSE)
 
 
 #############################################################################################
-# Plots the complementary cumulated distribution function of the specifie data.
+# Plots the complementary cumulative distribution function of the specified data.
 #
 # data: data to plot.
 # log: TRUE to use logarithmic scales for the axes.
