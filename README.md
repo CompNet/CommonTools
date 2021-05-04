@@ -1,8 +1,8 @@
-CommonTools v2.10.3
+CommonTools v2.10.5
 ===================
 *Library used in other projects*
 
-* Copyright 2010-19 Vincent Labatut
+* Copyright 2010-21 Vincent Labatut
 
 CommonTools is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. For source availability and license information see `licence.txt`
 
