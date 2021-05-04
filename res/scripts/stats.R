@@ -1,10 +1,32 @@
 #############################################################################################
-# Functions used to handle various standard plots.
+# Functions used to handle various statistical tasks.
 # 
 # 05/2021 Vincent Labatut
 #############################################################################################
 library("ercv")
 
+
+
+
+#############################################################################################
+# Computes the statistical mode for the specified sample.
+#
+# x: sample.
+# na.rm: what to do with NA values.
+#
+# returns: the statistical mode(s).
+#############################################################################################
+stat.mode <- function(x, na.rm=FALSE)
+{	if(na.rm)
+		x = x[!is.na(x)]
+	
+	ux <- unique(x)
+	tt <- tabulate(match(x, ux))
+	idx <- which.max(tt)
+	
+	res <- ux[idx]
+	return(res)
+}
 
 
 
