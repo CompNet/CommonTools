@@ -86,3 +86,27 @@ plot.ccdf <- function(data, main, xlab, log=FALSE)
 		)
 	}
 }
+
+## density function
+#data <- <my data>
+#ml <- "main title"
+#xl <- "x-axis title"
+## histogram
+#h <- hist(
+#	data,
+#	breaks=0:max(data),
+##	col="RED",
+##	xlab=xl,
+##	main=ml,
+##	freq=FALSE,
+#	plot=FALSE
+#)
+## scatterplot
+#x <- h$breaks[2:length(h$breaks)]
+#y <- h$density
+#idx <- which(y>0)
+#x <- x[idx]
+#y <- y[idx]
+#expmax <- floor(log(min(y),10))
+#plot(x, y, col="RED", xlab=xl, ylab="Density", main=ml, log="xy", yaxt="n") #las=1
+#axis(side=2, at=10^(expmax:0), label=parse(text=paste("10^", expmax:0, sep="")), las=1)
