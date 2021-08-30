@@ -46,7 +46,7 @@ test.cont.distr <- function(data)
 	# display results
 	tlog(4,"p-value for log-normal law: ",ln.bs$p)
 	
-	tlog(2,"Handling Weibull law")
+	tlog(2,"Handling Weibull law (aka stretched exponential)") # 
 	# create weibull law
 	weib.law <- conweibull$new(data)
 	# estimate parameters
