@@ -124,11 +124,14 @@ test.cont.distr <- function(data)
 	tlog(6,"p-values: ",comp.el$p_one_sided,", ",comp.el$p_two_sided)
 	
 	tlog(0,"-------------------------------")
-	tlog(0,"Interpretation of the distribution test: statistically significant if large enough")
+	tlog(0,"Interpretation of the distribution test:")
+	tlog(0,"  h_0: original data could have been drawn from the fitted distribution")
+	tlog(0,"  >> statistically significant if large enough")
 	tlog(0,"-------------------------------")
 	tlog(0,"Interpretation of the comparison test:")
 	tlog(2,"- The test statistic indicates whether the power-law (positive) or the other distribution (negative) is preferred")
 	tlog(2,"- The p-value indicates whether this sign is significant (small p)")
+	tlog(2,"- The one-sided value is order-dependent, the two-sided one is not (They seem to use the latter)")
 	
 	return(power.law$pars)
 }
@@ -252,12 +255,14 @@ test.disc.distr <- function(data)
 	tlog(6,"p-values: ",comp.el$p_one_sided,", ",comp.el$p_two_sided)
 	
 	tlog(0,"-------------------------------")
-	tlog(0,"Interpretation of the distribution test: statistically significant if large enough")
+	tlog(0,"Interpretation of the distribution test:")
+	tlog(0,"  h_0: original data could have been drawn from the fitted distribution")
+	tlog(0,"  >> statistically significant if large enough")
 	tlog(0,"-------------------------------")
 	tlog(0,"Interpretation of the comparison test:")
 	tlog(2,"- The test statistic indicates whether the power-law (positive) or the other distribution (negative) is preferred")
 	tlog(2,"- The p-value indicates whether this sign is significant (small p)")
-	tlog(2,"- The one-sided value is order dependent, the two-sided one is not")
+	tlog(2,"- The one-sided value is order-dependent, the two-sided one is not (They seem to use the latter)")
 	
 	return(power.law$pars)
 }
