@@ -10,21 +10,21 @@ library("poweRlaw")
 
 #############################################################################################
 # column names
-C_PL_EXP <- "PowerLaw_exp"
-C_PL_PVAL <- "PowerLaw_pval"
-C_POIS_PVAL <- "Poisson_pval"
-C_POIS_CLR <- "Poisson_cmp_LR"
-C_POIS_CPVAL <- "Poisson_cmp_pval"
-C_LNORM_PVAL <- "LogNormal_pval"
-C_LNORM_CLR <- "LogNormal_cmp_LR"
-C_LNORM_CPVAL <- "LogNormal_cmp_pval"
-C_EXPO_PVAL <- "Exponential_pval"
-C_EXPO_CLR <- "Exponential_cmp_LR"
-C_EXPO_CPVAL <- "Exponential_cmp_pval"
-C_WEIB_PVAL <- "Weibull_pval"
-C_WEIB_CLR <- "Weibull_cmp_LR"
-C_WEIB_CPVAL <- "Weibull_cmp_pval"
-
+C_DISTR <- c()
+C_PL_EXP <- "PowerLaw_exp"; C_DISTR <- c(C_DISTR, C_PL_EXP)
+C_PL_PVAL <- "PowerLaw_pval"; C_DISTR <- c(C_DISTR, C_PL_PVAL)
+C_POIS_PVAL <- "Poisson_pval"; C_DISTR <- c(C_DISTR, C_POIS_PVAL)
+C_POIS_CLR <- "Poisson_cmp_LR"; C_DISTR <- c(C_DISTR, C_POIS_CLR)
+C_POIS_CPVAL <- "Poisson_cmp_pval"; C_DISTR <- c(C_DISTR, C_POIS_CPVAL)
+C_LNORM_PVAL <- "LogNormal_pval"; C_DISTR <- c(C_DISTR, C_LNORM_PVAL)
+C_LNORM_CLR <- "LogNormal_cmp_LR"; C_DISTR <- c(C_DISTR, C_LNORM_CLR)
+C_LNORM_CPVAL <- "LogNormal_cmp_pval"; C_DISTR <- c(C_DISTR, C_LNORM_CPVAL)
+C_EXPO_PVAL <- "Exponential_pval"; C_DISTR <- c(C_DISTR, C_EXPO_PVAL)
+C_EXPO_CLR <- "Exponential_cmp_LR"; C_DISTR <- c(C_DISTR, C_EXPO_CLR)
+C_EXPO_CPVAL <- "Exponential_cmp_pval"; C_DISTR <- c(C_DISTR, C_EXPO_CPVAL)
+C_WEIB_PVAL <- "Weibull_pval"; C_DISTR <- c(C_DISTR, C_WEIB_PVAL)
+C_WEIB_CLR <- "Weibull_cmp_LR"; C_DISTR <- c(C_DISTR, C_WEIB_CLR)
+C_WEIB_CPVAL <- "Weibull_cmp_pval"; C_DISTR <- c(C_DISTR, C_WEIB_CPVAL)
 
 
 

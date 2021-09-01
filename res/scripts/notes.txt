@@ -46,8 +46,11 @@
 
 
 #############################################################################
-# Vectors
+# Vectors/Matrices
 #############################################################################
+- m <- matrix(vector(), nrow=0, ncol=length(colnames), dimnames=list(c(), colnames)): creates an empty matrix
+   whose columns match the names in vector colnames.
+
 - any(vector==value): checks if a value belongs to a vector
 
 - which(vector==value): returns the position of the value in the array
