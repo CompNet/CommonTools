@@ -178,6 +178,12 @@ test.cont.distr <- function(data, return_stats=FALSE, sims=1000)
 	tlog(2,"- The p-value indicates whether this sign is significant (small p)")
 	tlog(2,"- The one-sided value is order-dependent, the two-sided one is not (They seem to use the latter)")
 	
+	# draw conclusion
+	tlog(0,"-------------------------------")
+	tab[C_DECISION] <- make.decision.distr(tab, threshold=0.01)
+	tlog(2,"Conclusion: ", tab[C_DECISION])
+	tlog(0,"-------------------------------")
+	
 	if(return_stats)
 		res <- tab
 	else
@@ -341,6 +347,7 @@ test.disc.distr <- function(data, return_stats=FALSE, sims=100)
 	tlog(0,"-------------------------------")
 	tab[C_DECISION] <- make.decision.distr(tab, threshold=0.01)
 	tlog(2,"Conclusion: ", tab[C_DECISION])
+	tlog(0,"-------------------------------")
 	
 	if(return_stats)
 		res <- tab
