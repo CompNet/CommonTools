@@ -24,6 +24,8 @@
 - options(warn=2) converts them to errors, which will usually abort execution and allow post-mortem debugging
 - options(error=recover) allows executing the debugger() debug function after an error. type n for main menu, 0 to quit
 
+- tryCatch({source code}, warning=<<function>>, error=<<function>>)
+
 
 
 
@@ -164,4 +166,3 @@
 # Misc.
 #############################################################################
 - na.rm=TRUE: parameter allowing to ignore NA values in most stat functions
-- Sys.time(): returns the system's time. format: format(Sys.time(),"%a %b %d %X %Y")
