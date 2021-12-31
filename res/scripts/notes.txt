@@ -92,6 +92,8 @@
 		check.names=FALSE,
 		stringsAsFactors=FALSE
 	)
+- factor: convert vector to factors
+  ex: factor(c("blue","red","orange"), levels=c("blue","green","orange","red"))
 
 
 
@@ -103,15 +105,6 @@
 - sapply: same thing, but returns a vector (or matrix)
 - apply: for matrices, can be done to rows, columns, or cells
   cf. http://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/
-
-
-
-
-#############################################################################
-# Files and folders
-#############################################################################
-- factor: convert vector to factors
-  ex: factor(c("blue","red","orange"), levels=c("blue","green","orange","red"))
 
 
 
@@ -132,8 +125,19 @@
 # Files and folders
 #############################################################################
 - basename: returns the filename from a path (string)
+  ex: basename("aaa/bbb/ccc.txt") >> "ccc.txt"
+- fs::path_ext_remove: remove the (last) extension at the end of the file name.
+  ex: fs::path_ext_remove("abc.def.ghij.klm") -> "abc.def.ghij"
 - readLines: read a single line in a text file
-- file.path: builds a file path
+  ex:	con <- file(myfile, open="r")	# open the file
+		temp <- readLines(con)		# read each line and store as a string vector
+		close(con)					# close file
+- writeLines: write lines of text in a text file
+  ex: 	con <- file(myfile, open="wt")	# open new text file
+		writeLines(lines, con))			# write each string in the vector as a separate text line
+		close(con)						# close file
+- file.path: builds the path of a file based on the folders passed as parameters,
+  ex: file.path("a","b","c") -> "a/b/c"
 - dir.create(path=..., showWarnings=FALSE, recursive=TRUE): create folder if does not exist
 
 
