@@ -265,7 +265,7 @@ test.cont.distr <- function(data, xlab=NA, return_stats=FALSE, sims=1000, plot.f
 	{	msg <- "ERROR while applying powerexp";tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
 	}
 	else
-	{	msg <- paste0("Parameters: x_min=",trunc.law2$xmin," exp=",trunc.law2$exponent);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
+	{	msg <- paste0("Parameters: x_min=",trunc.law2$threshold," exp=",trunc.law2$exponent," rate=",trunc.law2$rate);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
 		tab[1,C_TRUNC_EXP] <- trunc.law2$exponent
 		comp.tl2 <- power.powerexp.lrt(power.d=power.law2, powerexp.d=trunc.law2)
 		msg <- paste0("Alt. Test statistic: ",comp.tl2$log.like.ratio, " p-value: ", comp.tl2$p_value);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
@@ -511,7 +511,7 @@ test.disc.distr <- function(data, xlab=NA, return_stats=FALSE, sims=100, plot.fi
 	{	msg <- paste0("ERROR: could not fit the discrete truncated power law");tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
 	}
 	else
-	{	msg <- paste0("Parameters: x_min=",trunc.law2$xmin," exp=",trunc.law2$exponent);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
+	{	msg <- paste0("Parameters: x_min=",trunc.law2$threshold," exp=",trunc.law2$exponent," rate=",trunc.law2$rate);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
 		tab[1,C_TRUNC_EXP] <- trunc.law2$exponent
 		comp.tl2 <- power.powerexp.lrt(power.d=power.law2, powerexp.d=trunc.law2)
 		msg <- paste0("Alt. Test statistic: ",comp.tl2$log.like.ratio, " p-value: ", comp.tl2$p_value);tlog(4,msg);msgs <- c(msgs, paste0("....",msg))
