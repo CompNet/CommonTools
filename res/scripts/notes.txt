@@ -126,6 +126,8 @@
 #############################################################################
 - basename: returns the filename from a path (string)
   ex: basename("aaa/bbb/ccc.txt") >> "ccc.txt"
+- dirname: returns the path of the folder of the current file path
+  ex: dirname("aaa/bbb/ccc.txt") >> "aaa/bbb"
 - fs::path_ext_remove: remove the (last) extension at the end of the file name.
   ex: fs::path_ext_remove("abc.def.ghij.klm") -> "abc.def.ghij"
 - readLines: read a single line in a text file
