@@ -172,3 +172,8 @@
 # Misc.
 #############################################################################
 - na.rm=TRUE: parameter allowing to ignore NA values in most stat functions
+- sometimes, real values seem similar but R does not think so. 
+  >> better way to compare them: use all.equal 
+  isTRUE(all.equal(x,y))
+  Note: it does not return a boolean, hence isTRUE is required when put in an "if"
+  see https://stackoverflow.com/questions/9508518/why-are-these-numbers-not-equal
