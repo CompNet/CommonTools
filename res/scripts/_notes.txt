@@ -25,7 +25,7 @@
 - options(error=recover) allows executing the debugger() debug function after an error. type n for main menu, 0 to quit
 
 - tryCatch({source code}, warning=<<function>>, error=<<function>>)
-
+- suppressWarnings({source code}}: prevent warnings raised in enclosed source code.
 
 
 
