@@ -127,7 +127,7 @@ CAT_COLORS_32 <- c(	# glasbey.colors(32) from package Polychrome
 #
 # returns: an appropriate palette, for categorical values.
 #############################################################
-get.palette <- function(values)
+get.color.palette <- function(values)
 {	if(values<=8)
 		result <- CAT_COLORS_8
 	else if(values<=12)
@@ -142,6 +142,26 @@ get.palette <- function(values)
 		result <- CAT_COLORS_32
 	
 	result <- result[1:values]
+	return(result)
+}
+
+
+
+
+#############################################################
+# Returns the specified number of levels of gray.
+#
+# values: desired number of levels of grey.
+#
+# returns: vector containing as many shades of gray.
+#############################################################
+get.gray.palette <- function(values)
+{	# compute the rgb components
+	lvs <- as.integer(seq(from=0,to=255,by=255/(values+1))[2:(values+1)])
+	
+	# produce the colors
+	result <- sapply(lvs, function(lv) rgb(lv,lv,lv,max=255))
+	
 	return(result)
 }
 
