@@ -3,6 +3,7 @@
 #############################################################################
 - packageVersion("package name"): return the version of an installed package
 - Sys.time(): returns the system's time. format: format(Sys.time(),"%a %b %d %X %Y")
+- install obsolete package: https://stackoverflow.com/a/25721890
 
 
 
